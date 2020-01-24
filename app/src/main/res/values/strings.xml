@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Sudoku</string>
+    <string name="app_name_all_capitals">SUDOKU</string>
+
+    <string name="start">Start</string>
+    <string name="resume">Continue</string>
+
+    <string name="madeby">monuk7735</string>
+    <string name="background">Backgroung Image</string>
+
+    <string name="test_ad_id">cca-app-pub-3940256099942544/6300978111</string>
+    <string name="my_ad_id">ca-app-pub-6168356692962345/8320920875</string>
+
+    <string name="version">v3.1</string>
+
+    <string name="instructions">Instructions</string>
+    <string name="instructions_1">1. In Sudoku it is intended to place all the remaining pieces on the board. The numbers range from 1 to 9 (in 9x9 Sudoku).</string>
+    <string name="instructions_2">2. The board is separated into several squares, and inside each of them it is only allowed to place one of each number.</string>
+    <string name="instructions_3">3. It is only allowed to place one of each number at each row, both horizontal and vertical.</string>
+    <string name="instructions_4">4. You have to click a number first and then click the box to put the selected number in it.</string>
+    
+    <string-array name="difficulty_entries">
+        <item>Very Easy</item>
+        <item>Easy</item>
+        <item>Normal</item>
+        <item>Hard</item>
+        <item>Very Hard</item>
+    </string-array>
+
+    <string-array name="difficulty_entry_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    
+    <!--Shared Prefrences Names-->
+    <string name="prefs_main_game">com.monuk7735.sudoku_game_preferences</string>
+    <string name="prefs_table">TABLE</string>
+    <string name="prefs_hidden_squares">HIDDEN</string>
+    <string name="prefs_chronometer">CHRONOMETER</string>
+
+    <string name="prefs_settings">com.monuk7735.sudoku_preferences</string>
+    <string name="prefs_sound">SOUND</string>
+    <string name="prefs_vibrate">VIBRATE</string>
+    <string name="prefs_difficulty">DIFFICULTY</string>
+    <string name="prefs_wallpaper">WALLPAPER</string>
+
+</resources>

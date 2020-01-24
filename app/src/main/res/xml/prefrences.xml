@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="Settings">
+
+
+    <PreferenceCategory android:title="GAMEPLAY">
+
+        <SwitchPreference
+            android:icon="@drawable/ic_sound"
+            android:key="@string/prefs_sound"
+            android:summary="Play feedback sounds"
+            android:defaultValue="true"
+            android:title="Sound" />
+
+        <SwitchPreference
+            android:icon="@drawable/ic_vibration"
+            android:key="@string/prefs_vibrate"
+            android:defaultValue="true"
+            android:summary="Get haptic feedback"
+            android:title="Vibration" />
+
+<!--
+        <Preference
+            android:icon="@drawable/ic_set_background_image"
+            android:key="@string/prefs_wallpaper"
+            android:summary="Set main background image"
+            android:title="Choose Wallpaper">
+
+            <intent
+                android:action="android.intent.action.GET_CONTENT"
+                android:data="@android:string/copy"
+                android:identifier="@string/background"
+                android:mimeType="image/*" />
+
+        </Preference>
+-->
+
+        <ListPreference
+            android:defaultValue="3"
+            android:entries="@array/difficulty_entries"
+            android:entryValues="@array/difficulty_entry_value"
+            android:icon="@drawable/ic_difficulty"
+            android:key="@string/prefs_difficulty"
+            android:summary="Specify difficulty for the game"
+            android:title="Difficulty" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Help">
+
+        <Preference
+            android:icon="@drawable/ic_instructions"
+            android:key="instructions"
+            android:summary="How to play"
+            android:title="@string/instructions" />
+
+        <Preference
+            android:icon="@drawable/ic_feedback"
+            android:key="feedback"
+            android:summary="Suggestions are always welcome"
+            android:title="Feedback" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="ABOUT">
+        <PreferenceScreen
+            android:icon="@drawable/ic_developer"
+            android:summary="@string/madeby"
+            android:title="Developer">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://instagram.com/monuk7735?igshid=14239srhxztpn" />
+        </PreferenceScreen>
+
+        <Preference
+            android:icon="@drawable/ic_version"
+            android:summary="@string/version"
+            android:title="Version" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="background">#1e90ff</color>
+
+    <color name="pure_black">#000</color>
+    <color name="pure_grey">#757575</color>
+    
+    <color name="background_grey">#686868</color>
+
+    <color name="translucent">#7A303030</color>
+
+    <color name="wrong_cell">#c0392b</color>
+    <color name="right_cell">#27ae60</color>
+    <color name="normal_even_cell">#5C97BF</color>
+    <color name="normal_odd_cell">#BDC3C7</color>
+    <color name="selected_cell">#F58C07</color>
+
+    <color name="normal_positive_dialog_button">#7C7C7C</color>
+    <color name="clicked_positive_dialog_button">#2ecc71</color>
+
+    <color name="normal_negative_dialog_button">#7C7C7C</color>
+    <color name="clicked_negative_dialog_button">#c0392b</color>
+
+    <color name="normal_neutral_dialog_button">#7C7C7C</color>
+    <color name="clicked_neutral_dialog_button">#2980b9</color>
+
+    <color name="normal_button">#B4B4B4</color>
+    <color name="selected_button">#7C7C7C</color>
+
+    <color name="normal_dialog_button">#B4B4B4</color>
+    <color name="selected_dialog_button">#7C7C7C</color>
+
+    <color name="normal_menu_button">#3498db</color>
+    <color name="selected_menu_button">#2980b9</color>
+
+    <color name="splash_background">#2980b9</color>
+
+</resources>

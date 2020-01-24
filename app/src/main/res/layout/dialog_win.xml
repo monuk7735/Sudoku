@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="375dp"
+        android:layout_height="225dp"
+        android:background="@drawable/dialog_box_background"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/font_montserrat"
+            android:text="You did it!!!"
+            android:textAlignment="center"
+            android:textSize="40dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:src="@drawable/happy_emoji"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_montserrat"
+            android:text="Do you wish to play again?"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/positive"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:text="Sure"
+                android:fontFamily="sans-serif-black"
+                android:background="@drawable/positive_dialog_button_background"
+                android:layout_marginLeft="20dp"/>
+
+            <Button
+                android:id="@+id/negative"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:text="No"
+                android:fontFamily="sans-serif-black"
+                android:background="@drawable/negative_dialog_button_background"
+                android:layout_marginLeft="30dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

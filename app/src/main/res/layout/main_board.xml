@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:id="@+id/tableLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <GridLayout
+        android:id="@+id/grid1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/square0"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <include
+            android:id="@+id/square1"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <include
+            android:id="@+id/square2"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/grid2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/square3"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <include
+            android:id="@+id/square4"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <include
+            android:id="@+id/square5"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/grid3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/square6"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <include
+            android:id="@+id/square7"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <include
+            android:id="@+id/square8"
+            layout="@layout/square_cell"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+    </GridLayout>
+
+</TableLayout>
