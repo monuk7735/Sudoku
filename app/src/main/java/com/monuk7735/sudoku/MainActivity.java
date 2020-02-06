@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -15,6 +16,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout constraintLayout;
 
     boolean doubleBackToExitPressedOnce = false;
+
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
             bResume.setVisibility(View.VISIBLE);
         } else
             bResume.setVisibility(View.GONE);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        adView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         iMainGame = new Intent(this, MainGameActivity.class);
         iSettings = new Intent(this, SettingsActivity.class);
@@ -70,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
         mSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSettings.setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSettings.setClickable(true);
+                    }
+                }, 2000);
                 RotateAnimation anim = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 anim.setDuration(1000);
                 startActivity(iSettings);

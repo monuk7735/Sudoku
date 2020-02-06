@@ -51,9 +51,9 @@
         android:textColor="@color/pure_black"
         android:textSize="65sp"
         android:transitionName="app_title"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
 
@@ -74,7 +74,7 @@
         android:fontFamily="@font/font_montserrat"
         android:text="@string/resume"
         android:textAllCaps="false"
-        android:textSize="40sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/start"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
@@ -88,10 +88,23 @@
         android:fontFamily="@font/font_montserrat"
         android:text="@string/start"
         android:textAllCaps="false"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6168356692962345/3155561390"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <androidx.constraintlayout.widget.Guideline

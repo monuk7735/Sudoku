@@ -1,8 +1,5 @@
 package com.monuk7735.sudoku;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +11,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.os.Vibrator;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -25,9 +21,17 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Random;
+
+import static com.google.android.gms.ads.AdRequest.ERROR_CODE_NO_FILL;
 
 public class MainGameActivity extends AppCompatActivity {
     TableLayout[] mBox = new TableLayout[9];
@@ -41,6 +45,7 @@ public class MainGameActivity extends AppCompatActivity {
     Vibrator vibrator;
     Intent iSettings;
     MediaPlayer tapSound, winnerSound;
+    private InterstitialAd interstitialAd;
 
     String SelectedNum = null;
 
@@ -66,6 +71,7 @@ public class MainGameActivity extends AppCompatActivity {
             editor.putBoolean("isSaved", true);
             editor.apply();
             saveGame();
+            interstitialAd.show();
             super.onBackPressed();
             overridePendingTransition(R.anim.paused, R.anim.slide_out_bottom);
             return;
@@ -96,7 +102,7 @@ public class MainGameActivity extends AppCompatActivity {
         preferences = getSharedPreferences(getString(R.string.prefs_settings), MODE_PRIVATE);
         isSoundON = preferences.getBoolean(getString(R.string.prefs_sound), true);
         isVibrationON = preferences.getBoolean(getString(R.string.prefs_vibrate), true);
-        if (difficulty != preferences.getString(getString(R.string.prefs_difficulty), "0").toCharArray()[0])
+        if (difficulty != preferences.getString(getString(R.string.prefs_difficulty), "1").toCharArray()[0])
             Snackbar.make(constraintLayout, "Difficulty Changed", Snackbar.LENGTH_LONG)
                     .setAction("Restart", new View.OnClickListener() {
                         @Override
@@ -105,13 +111,66 @@ public class MainGameActivity extends AppCompatActivity {
                         }
                     })
                     .show();
-        difficulty = preferences.getString(getString(R.string.prefs_difficulty), "0").toCharArray()[0];
+        difficulty = preferences.getString(getString(R.string.prefs_difficulty), "1").toCharArray()[0];
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_game);
+
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-6168356692962345/3490796838");
+        //Test Ad ID
+        //interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        //Test Video Ad
+        //interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/8691691433");
+        interstitialAd.setImmersiveMode(true);
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+                switch (errorCode){
+                    case ERROR_CODE_NO_FILL:
+                        Toast.makeText(getApplicationContext(), "AdMob ki Galti", Toast.LENGTH_LONG).show();
+                        break;
+                    case  AdRequest.ERROR_CODE_INVALID_REQUEST:
+                        Toast.makeText(getApplicationContext(), "ID Hi Galat Hai", Toast.LENGTH_LONG).show();
+                        break;
+                    case AdRequest.ERROR_CODE_INTERNAL_ERROR:
+                        Toast.makeText(getApplicationContext(), "AdMob ki Gand Phat Gyi", Toast.LENGTH_LONG).show();
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when the ad is displayed.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the interstitial ad is closed.
+            }
+        });
 
         isResumed = getIntent().getExtras().getBoolean("isResumed", false);
 
@@ -199,8 +258,7 @@ public class MainGameActivity extends AppCompatActivity {
         if (isResumed) {
             Resume();
             mStopwatch.setBase(SystemClock.elapsedRealtime() - chronometerOffset);
-        }
-        else
+        } else
             NewGame();
         mStopwatch.start();
 
@@ -223,7 +281,6 @@ public class MainGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int x = 0;
                 ButtonClickEvents(x);
-
             }
         });
 
@@ -1186,7 +1243,7 @@ public class MainGameActivity extends AppCompatActivity {
         int BoxY = returnBoxY(x, y);
         for (int i = 0; i < 9; i++) {
             if (i == BoxY)
-                ;
+                continue;
             else if (TextUtils.equals(individualBoxSquare[BoxX][BoxY].getText(), individualBoxSquare[BoxX][i].getText()))
                 return true;
         }
@@ -1272,6 +1329,8 @@ public class MainGameActivity extends AppCompatActivity {
             }
         });
         dialog.setCancelable(false);
+        if (interstitialAd.isLoaded())
+            interstitialAd.show();
         dialog.show();
         if (isSoundON)
             winnerSound.start();
